@@ -20,7 +20,7 @@ stage("Publish to Docker Hub") {
     } 
 }
 stage('Run Container on Dev Server'){
-     def dockerRun = 'docker run -p 8082:8080 -d --name country shah1992/airport-assembly:1.0.3'
+     def dockerRun = 'docker run -p 8082:8080 -d --name airport shah1992/airport-assembly:1.0.3'
      sshagent(['aws-docker']) {
        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.110 ${dockerRun}"
      }
